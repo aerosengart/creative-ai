@@ -86,7 +86,24 @@ class NGramModel(object):
         Effects:  returns a candidate item (a key in the candidates dictionary)
                   based on the algorithm described in the spec.
         """
-        pass
+        
+        i = 0
+        weightedList = {candidates.values()[i]}
+        lengthDict = len(candidates)
+        while i < (lengthDict - 1):
+            initElem = weightedList[i]
+            i += 1
+            nextElem = candidates.values()[i]
+            weightedList.append(initElem + nextElem)
+        minVal = weightedList[0]
+        maxVal = weightedList[lengthDict]
+        choice = random.randrange(minVal, maxVal)
+        j = 0
+        listVal = weightedList[j]
+        while choice > weightedList[j]
+            j += 1
+            listVal = weightedList[j]
+        return candidate.keys()[j]
 
     def getNextToken(self, sentence):
         """
@@ -98,7 +115,9 @@ class NGramModel(object):
                   For more information on how to put all these functions
                   together, see the spec.
         """
-        pass
+        
+        returnDict = getCandidateDictionary(self, sentence)
+        return weightedChoice(self, returnDict)
 
     def getNextNote(self, musicalSentence, possiblePitches):
         """
